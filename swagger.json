@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://petstore.swagger.io/v1"
+      "url": "https://lfs-checkdigit-api.herokuapp.com/"
     }
   ],
   "paths": {
