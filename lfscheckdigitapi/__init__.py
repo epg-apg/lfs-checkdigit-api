@@ -1,5 +1,5 @@
 import sentry_sdk
-from flask import Flask, abort
+from flask import Flask, abort, escape
 from sentry_sdk.integrations.flask import FlaskIntegration
 from .checkdigit import calculateCheckDigit
 
@@ -30,6 +30,6 @@ def barcode(number):
 @app.route('/number/<int:number>', methods=['GET'])
 def number(number):
     return {
-        "input": number,
+        "input": escape(number),
         "checkDigit": calculateCheckDigit(str(number))
     }
