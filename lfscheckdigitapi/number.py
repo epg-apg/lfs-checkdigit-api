@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, escape
+    Blueprint, abort
 )
 
 from .checkdigit import calculateCheckDigit
@@ -7,9 +7,15 @@ from .checkdigit import calculateCheckDigit
 bp = Blueprint('number', __name__, url_prefix='/number')
 
 
-@bp.route('/<int:number>', methods=['GET'])
+@bp.route('/<number>', methods=['GET'])
 def number(number):
+    intNumber = 0
+    try:
+        intNumber = int(number)
+    except:
+        abort(400)
+        
     return {
-        "input": int(number),
-        "checkDigit": calculateCheckDigit(str(number))
+        "input": intNumber,
+        "checkDigit": calculateCheckDigit(number)
     }

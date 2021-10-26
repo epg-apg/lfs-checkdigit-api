@@ -8,12 +8,12 @@ def calculateCheckDigit(number):
     sum = 0
     i = 0
 
-    for digit in map(int, number):
+    for digit in map(int, reversed(number)):
         i += 1
         if i % 2 == 0:
-            sum += digit * 3
-        else:
             sum += digit
+        else:
+            sum += digit * 3
 
     rem = sum % 10
     if rem != 0:
