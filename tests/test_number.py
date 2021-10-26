@@ -6,6 +6,10 @@ def test_number(client):
     expected_json = dict(input=123, checkDigit=6)
     assert json.loads(response.data) == expected_json
 
+    response = client.get('/number/587156')
+    expected_json = dict(input=587156, checkDigit=8)
+    assert json.loads(response.data) == expected_json
+
     response = client.get('/number/000000587156')
     expected_json = dict(input=587156, checkDigit=8)
     assert json.loads(response.data) == expected_json
