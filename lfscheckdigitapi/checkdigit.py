@@ -11,10 +11,12 @@ def calculateCheckDigit(number):
     for digit in map(int, number):
         i += 1
         if i % 2 == 0:
-            sum += digit
-        else:
             sum += digit * 3
+        else:
+            sum += digit
 
-    checkDigit = 10 - sum % 10
+    rem = sum % 10
+    if rem != 0:
+        checkDigit = 10 - sum % 10
 
     return checkDigit
