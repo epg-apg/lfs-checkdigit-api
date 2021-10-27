@@ -10,6 +10,6 @@ bp = Blueprint('number', __name__, url_prefix='/number')
 @bp.route('/<int:number>', methods=['GET'])
 def number(number):
     return {
-        "input": number,
+        "input": int(number),
         "checkDigit": calculateCheckDigit(str(number))
     }
