@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3.11-alpine
 
 COPY ./requirements.txt /app/requirements.txt
 
@@ -6,9 +6,13 @@ COPY ./requirements.txt /app/requirements.txt
 WORKDIR /app
 RUN pip install -r requirements.txt
 
+# install runtime environment
+RUN pip install waitress
+
 # copy every content from the local file to the image
 COPY . /app
 
 # configure the container to run in an executed manner
-ENTRYPOINT [ "python" ]
-CMD ["app.py" ]
+CMD ["waitress-serve", "--call", "lfscheckdigitapi:create_app"]
+
+EXPOSE 8080
