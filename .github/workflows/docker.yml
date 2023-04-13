@@ -23,4 +23,4 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         push: true
-        tags: lfscheckdigitapi/app:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/lfscheckdigitapi:latest
